@@ -1,11 +1,22 @@
-/* eslint-disable */
-import "bootstrap";
-import "./style.css";
+let element = document.querySelector("#List");
+let pronoun = ["the", "our"];
+let adj = ["great", "big"];
+let noun = ["jogger", "racoon"];
 
-import "./assets/img/rigo-baby.jpg";
-import "./assets/img/4geeks.ico";
+function generateDomains(pronouns, adjectives, nouns) {
+  let domains = [];
+  for (let p of pronouns) {
+    for (let a of adjectives) {
+      for (let n of nouns) {
+        domains.push(`${p}${a}${n}.com`);
+      }
+    }
+  }
+  return domains;
+}
 
-window.onload = function() {
-  //write your code here
-  console.log("Hello Rigo from the console!");
-};
+let domainList = generateDomains(pronoun, adj, noun);
+console.log(domainList.join("\n"));
+for (let i = 0; i < domainList.length; i++) {
+  element.innerHTML += `<h1>${domainList[i]}</h1>`;
+}
